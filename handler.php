@@ -4,7 +4,7 @@ include 'user.php';
 include 'validator.php';
 
 $validator = new Validator();
-$user = new User();
+$user = new User("MySQL-8.0", "testDB", "root", "");
 $errors = [];
 
 $name = $_POST['name'];
@@ -12,13 +12,13 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 
-if ($validator->is_Email_Valid($email) !== true){
+if ($validator->isEmailValid($email) !== true){
     array_push($errors, "Невалидный email");
 }
-if ($validator->is_Name_Valid($name) !== true){
+if ($validator->isNameValid($name) !== true){
     array_push($errors, "Невалидный имя");
 }
-if ($validator->is_Password_Valid($password) !== true){
+if ($validator->isPasswordValid($password) !== true){
     array_push($errors, "Невалидный пароль");
 }
 

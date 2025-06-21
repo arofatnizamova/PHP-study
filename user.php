@@ -3,18 +3,19 @@
 class User {
     public $pdo;
 
-    public function __construct()
+    public function __construct($host, $dbname, $username, $password)
     {
-        $this -> pdo = new PDO("mysql:host=MySQL-8.0;dbname=testDB", "root", "");
+        $dsn = "mysql:host=$host;dbname=$dbname;charset=utf8mb4";
+        $this -> pdo = new PDO($dsn, $username, $password);
     }
 
-    public function getbyId($id){
+    public function getById($id){
         $stmt = $this->pdo->prepare("SELECT * FROM users WHERE id = ?");
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function deletebyId($id){
+    public function deleteById($id){
         $stmt = $this->pdo->prepare("DELETE FROM users WHERE id = ?");
         return $stmt->execute([$id]);
     }
@@ -30,12 +31,14 @@ class User {
     }
 
     public function isRegistered($email){
-        $stmt = $this->pdo->prepare("SELECT COUNT(*) FROM users WHERE email = ?");
+        $stmt = $this->pdo->prepare("SELECT id FROM users WHERE email = ?");
         $stmt-> execute([$email]);
-        if($stmt->fetchColumn() > 0){
-            return true;
-        } else{
-            return false;
-        }
+        return $stmt->fetchColumn() > 0;
+    }
+
+    public function isUserExist($email, $password){
+        $stmt = $this->pdo->prepare("SELECT id FROM users WHERE email = ? AND password = ?");
+        $stmt-> execute([$email, $password]);
+        return $stmt->fetchColumn() >0;
     }
 }
