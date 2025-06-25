@@ -2,9 +2,10 @@
 
 include 'user.php';
 include 'validator.php';
+include 'data-base.php';
 
+$user = new User($pdo);
 $validator = new Validator();
-$user = new User("MySQL-8.0", "testDB", "root", "");
 $errors = [];
 
 $name = $_POST['name'];
@@ -29,9 +30,9 @@ if (!empty($errors)) {
     exit;
 }
 
-if($user ->isRegistered($email) === true){
+if($user->isRegistered($email) === true){
     echo "Пользователь с таким email уже зарегистрирован.";
 } else{
-    $user -> create($name, $email, $password);
+    $user->create($name, $email, $password);
     echo "Регистрация прошла успешно!";
 }
