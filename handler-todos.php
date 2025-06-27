@@ -3,7 +3,7 @@ session_start();
 include 'components/Todos.php';
 include 'data-base.php';
 
-$todo = new Todos($tasksBD);
+$todo = new Todos($pdo);
 
 
 $task = $_POST['task'];

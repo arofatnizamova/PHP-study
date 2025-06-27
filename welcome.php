@@ -4,7 +4,7 @@ session_start();
 include 'components/Todos.php';
 include 'data-base.php';
 
-$tasks = new Todos($tasksBD);
+$tasks = new Todos($pdo);
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -25,7 +25,7 @@ $tasks = new Todos($tasksBD);
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="w-100">
-                            <h1 class="text-primary">Your Todo list</h1>
+                            <h1 class="">Your Todo list</h1>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -60,7 +60,7 @@ $tasks = new Todos($tasksBD);
                         <div class="w-100">
                             <form action="handler-todos.php" method="post">
                                 <textarea name="task" id="task" placeholder="write your task" class="form-control mb-4"></textarea>
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn bg-black text-white">
                                     Add task
                                 </button>
                             </form>
