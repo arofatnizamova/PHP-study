@@ -1,7 +1,7 @@
 <?php
 
-include 'user.php';
-include 'validator.php';
+include 'components/User.php';
+include 'components/Validator.php';
 include 'data-base.php';
 
 $user = new User($pdo);

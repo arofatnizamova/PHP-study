@@ -1,15 +1,20 @@
 <?php
 
-include 'user.php';
-$user = new User("MySQL-8.0", "testDB", "root", "");
+include 'components/User.php';
+include 'data-base.php';
+$user = new User($pdo);
 
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-session_start();
 
-if ($user->isUserExist($email, $password)) {
-    $_SESSION['logged_in'] = true;
+$userData = $user->isEuserExist($email, $passowrd);
+
+
+
+if ($userData) {
+    session_start();
+    $_SESSION['user_id'] = $userData['id'];
     header("Location: welcome.php");
     exit;
 } else {

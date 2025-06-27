@@ -8,7 +8,7 @@ class User {
     /**
      * @var PDO Database connection instance
      */
-    private $pdo;
+    private $pdo; 
 
     /**
      * User constructor.
@@ -91,6 +91,6 @@ class User {
     public function isUserExist($email, $password){
         $stmt = $this->pdo->prepare("SELECT id FROM users WHERE email = ? AND password = ?");
         $stmt->execute([$email, $password]);
-        return $stmt->fetchColumn() > 0;
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
