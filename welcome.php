@@ -1,23 +1,25 @@
+<?php
+session_start(); 
 
+include 'components/Todos.php';
+include 'data-base.php';
+
+$tasks = new Todos($tasksBD);
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>Todos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
 </head>
 <body>
 
 <div class="container mt-5">
     
     <?php if (isset($_SESSION['user_id'])): ?>
-        <?php
-            session_start();
-            include 'components/Todos.php';
-            include 'data-base.php';
-
-            $tasks = new Todos($tasksBD);
-        ?>
         <section>
             <div class="container">
                 <div class="row">
@@ -34,18 +36,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach($tasks->getTasks() as $index => $item) : ?>
+                                    <?php foreach($tasks->getTasks($_SESSION['user_id']) as $index => $item) : ?>
                                         <tr>
-                                            <th><?= $index; ?></th>
+                                            <th><?= $index + 1; ?></th>
                                             <td><?= $item['task']; ?></td>
                                             <td>
-                                                <div class="bg-black text-white p-4">
-                                                    <i class="bi bi-pencil-fill fs-3"></i>
+                                                <div class="bg-black text-white p-1 rounded-4 d-flex align-items-center justify-content-center">
+                                                    <i class="bi bi-pencil-fill fs-6"></i>
                                                 </div>
                                             </td>
                                             <td>
-                                                <div class="bg-black text-white p-4">
-                                                    <i class="bi bi-trash-fill fs-3"></i>
+                                                <div class="bg-black text-white p-1 rounded-4 d-flex align-items-center justify-content-center">
+                                                    <i class="bi bi-trash-fill fs-6"></i>
                                                 </div>
                                             </td>
                                         </tr>

@@ -8,7 +8,7 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 
-$userData = $user->isEuserExist($email, $passowrd);
+$userData = $user->isUserExist($email, $password);
 
 
 
