@@ -41,14 +41,14 @@ $tasks = new Todos($pdo);
                                             <th><?= $index + 1; ?></th>
                                             <td><?= $item['task']; ?></td>
                                             <td>
-                                                <div class="bg-black text-white p-1 rounded-4 d-flex align-items-center justify-content-center">
+                                                <a href="todo-update.php?<?=http_build_query(['id' => $item['id'], 'task' => $item['task']])?>" class="bg-black text-white p-1 rounded-4 d-flex align-items-center justify-content-center">
                                                     <i class="bi bi-pencil-fill fs-6"></i>
-                                                </div>
+                                                </a>
                                             </td>
                                             <td>
-                                                <div class="bg-black text-white p-1 rounded-4 d-flex align-items-center justify-content-center">
+                                                <a href="todo-delete.php?<?=http_build_query(['id' => $item['id']])?>" class="bg-black text-white p-1 rounded-4 d-flex align-items-center justify-content-center">
                                                     <i class="bi bi-trash-fill fs-6"></i>
-                                                </div>
+                                                </a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
