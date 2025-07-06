@@ -1,7 +1,7 @@
 <?php
 session_start(); 
 
-include 'components/Todos.php';
+include __DIR__ . '/../components/Todos.php';
 include 'data-base.php';
 
 $tasks = new Todos($pdo);

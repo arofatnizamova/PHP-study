@@ -1,7 +1,7 @@
 <?php
 
 if(isset($_POST['task'], $_POST['id'])){
-    include 'components/Todos.php';
+    include __DIR__ . '/../components/Todos.php';
     include 'data-base.php';
 
     $todo = new Todos($pdo);
