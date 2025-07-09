@@ -8,6 +8,7 @@
         <button type="submit" class="btn btn-dark w-100">Зарегистрироваться</button>
       </form>
       <div v-if="errorMessage" class="text-danger mt-2">{{ errorMessage }}</div>
+      <p class="mt-4 text-white text-center">Есть акаунт? <router-link to="/Login"><span class="fw-bold">Войти</span></router-link></p>
     </div>
   </template>
   

@@ -7,6 +7,7 @@
       <button type="submit" class="btn btn-dark w-100">Войти</button>
     </form>
     <div v-if="errorMessage" class="text-danger mt-2">{{ errorMessage }}</div>
+    <p class="mt-4 text-white">Нет акаунта? <router-link to="/register"><span class="fw-bold">Зарегестрируйтесь</span></router-link></p>
   </div>
 </template>
 
@@ -34,10 +35,12 @@ export default {
         const result = await response.json();
 
         if (result.success) {
-          this.$router.push('/welcome'); 
-        } else {
-          this.errorMessage = result.message || 'Ошибка входа';
-        }
+            localStorage.setItem('token', result.token);
+            localStorage.setItem('user_id', result.user_id);
+            this.$router.push('/welcome'); 
+          } else {
+            this.errorMessage = result.message || 'Ошибка входа';
+          }
       } catch (err) {
         this.errorMessage = 'Ошибка соединения с сервером';
       }
