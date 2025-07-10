@@ -17,15 +17,18 @@ import { RouterLink, RouterView } from 'vue-router'
 
 </template>
 <style>
-  body{
-    background: white;
-  }
-  #app {
-  display: block;
-  place-items: center;
+  html,
+body {
   height: 100vh;
-  max-width: 2280px;
+  width: 100vw;
+  margin: 0;
+  background: white;
 }
 
+#app {
+  height: inherit;
+  width: inherit;
+  display: block;
+}
   
 </style>
