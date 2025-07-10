@@ -16,3 +16,16 @@ import { RouterLink, RouterView } from 'vue-router'
   </main>
 
 </template>
+<style>
+  body{
+    background: white;
+  }
+  #app {
+  display: block;
+  place-items: center;
+  height: 100vh;
+  max-width: 2280px;
+}
+
+  
+</style>

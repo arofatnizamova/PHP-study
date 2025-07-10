@@ -1,6 +1,6 @@
 <template>
     <div class="container mt-5">
-      <h1 class="mb-4 fw-bold text-center">Регистрация</h1>
+      <h1 class="mb-4 fw-bold text-center text-black">Регистрация</h1>
       <form @submit.prevent="handleRegister">
         <input v-model="name" type="text" required placeholder="Имя" class="form-control mb-2" />
         <input v-model="email" type="email" required placeholder="Email" class="form-control mb-2" />
@@ -8,7 +8,7 @@
         <button type="submit" class="btn btn-dark w-100">Зарегистрироваться</button>
       </form>
       <div v-if="errorMessage" class="text-danger mt-2">{{ errorMessage }}</div>
-      <p class="mt-4 text-white text-center">Есть акаунт? <router-link to="/Login"><span class="fw-bold">Войти</span></router-link></p>
+      <p class="mt-4 text-center">Есть акаунт? <router-link to="/Login"><span class="fw-bold">Войти</span></router-link></p>
     </div>
   </template>
   

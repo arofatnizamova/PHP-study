@@ -1,7 +1,8 @@
 <template>
+    <div class="container">
+        <TodoList/>
+    </div>
     <div class="text-center">
-      <h1>Добро пожаловать!</h1>
-      <p>Вы зарегистрированы и вошли в систему.</p>
       <button @click="logout" class="btn btn-outline-danger">
       Выйти
     </button>
@@ -10,6 +11,7 @@
   
   <script setup>
     import { useRouter } from 'vue-router';
+    import TodoList from '@/components/TodoList.vue';
     
     const router = useRouter();
     
